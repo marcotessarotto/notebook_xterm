@@ -8,6 +8,8 @@ from IPython.core.magic import (Magics, magics_class, line_magic, cell_magic)
 
 JS_FILE_NAME = 'terminalclient.js'
 
+XTERM_COUNTER = 0
+
 @magics_class
 class Xterm(Magics):
 
@@ -17,10 +19,13 @@ class Xterm(Magics):
         with open(jsPath) as f:
             terminalClient_js = f.read()
 
+        global XTERM_COUNTER
+        XTERM_COUNTER = XTERM_COUNTER + 1
+
         markup = """
         <div id="notebook_xterm"></div>
-        <script>{0}</script>
-        """.format(terminalClient_js)
+        <script>var XTERM_COUNTER = '' + {};{}</script>
+        """.format(str(XTERM_COUNTER), terminalClient_js)
         display(HTML(markup))
 
     def getTerminalServer(self):
