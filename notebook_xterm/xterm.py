@@ -23,9 +23,9 @@ class Xterm(Magics):
         XTERM_COUNTER = XTERM_COUNTER + 1
 
         markup = """
-        <div id="notebook_xterm"></div>
+        <div id="notebook_xterm{}"></div>
         <script>var XTERM_COUNTER = '' + {};{}</script>
-        """.format(str(XTERM_COUNTER), terminalClient_js)
+        """.format(str(XTERM_COUNTER), str(XTERM_COUNTER), terminalClient_js)
         display(HTML(markup))
 
     def getTerminalServer(self):

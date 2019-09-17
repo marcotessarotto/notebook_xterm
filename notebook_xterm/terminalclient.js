@@ -52,7 +52,7 @@ function TerminalClient(elem) {
 }
 
 TerminalClient.prototype.create_ui = function(elem) {
-    var INITIAL_TITLE = 'notebook_xterm'
+    var INITIAL_TITLE = 'notebook_xterm'.concat(XTERM_COUNTER)
     // add xterm stylesheet for formatting
     var xtermCssUrl = 'https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.min.css'
     $('<link/>', {rel: 'stylesheet', href: xtermCssUrl}).appendTo('head');
